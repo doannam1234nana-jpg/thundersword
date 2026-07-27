@@ -1,0 +1,36 @@
+name: Build Thunder Sword mod
+
+# Chạy tự động mỗi khi bạn push code lên nhánh main,
+# hoặc bạn có thể chạy tay bằng nút "Run workflow" trong tab Actions.
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Cài Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Action này tự cài Gradle, không cần file gradlew trong repo
+      - name: Cài Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.1.1'
+
+      - name: Build mod (.jar)
+        run: gradle build --no-daemon
+
+      - name: Tải file .jar về (artifact)
+        uses: actions/upload-artifact@v4
+        with:
+          name: thundersword-jar
+          path: build/libs/*.jar
