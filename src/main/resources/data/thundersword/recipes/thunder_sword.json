@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " T ",
+    " D ",
+    " S "
+  ],
+  "key": {
+    "T": {
+      "item": "minecraft:trident"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "thundersword:thunder_sword",
+    "count": 1
+  }
+}
