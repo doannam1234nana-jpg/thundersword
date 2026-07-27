@@ -7,7 +7,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.EventBusSubscriber;
 
 @Mod(ThunderSwordMod.MOD_ID)
 public class ThunderSwordMod {
@@ -22,7 +21,7 @@ public class ThunderSwordMod {
     }
 
     // Adds our item to the vanilla "Combat" creative tab so players can find it easily
-    @EventBusSubscriber(modid = MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ModEvents {
         @SubscribeEvent
         public static void onBuildCreativeModeTabContents(BuildCreativeModeTabContentsEvent event) {
